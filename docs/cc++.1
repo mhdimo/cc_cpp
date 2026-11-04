@@ -1,0 +1,162 @@
+.\" The man page of the C++ port of the Claude Code CLI.
+.TH "CC++" 1 "November 5, 2026" "claude-code-cpp" "User Commands"
+.SH NAME
+cc++ \- an interactive agent that writes and runs code
+.SH SYNOPSIS
+.B cc++
+.RI [ options ]
+.RI [ prompt ]
+.SH DESCRIPTION
+.B cc++
+is a command-line agent that reads a folder, answers questions about it and
+changes it. It runs in an interactive session: the prompt is written at the
+bottom of the screen, the answer of the model is written above it, and the
+tools it asks for are run in between.
+.PP
+With a prompt of its own the session starts with that prompt and waits for
+more. Without one it waits for the prompt.
+.PP
+The session keeps its conversation in a transcript under
+.IR ~/.claude/projects/ ,
+so that a session may be taken up again later with
+.BR \-\-resume .
+.SH OPTIONS
+.TP
+.BR \-p ", " \-\-print
+Print the response and exit, rather than opening a session.
+.TP
+.BI \-\-output\-format " fmt"
+The format
+.B \-\-print
+writes in:
+.B text
+or
+.BR json .
+.TP
+.BI \-\-model " model"
+The model to use.
+.TP
+.BI \-\-fallback\-model " model"
+The model to use when the primary one is unavailable.
+.TP
+.BI \-\-permission\-mode " mode"
+How the session asks for permission:
+.BR default ,
+.BR acceptEdits ,
+.BR plan ,
+.B bypassPermissions
+or
+.BR dontAsk .
+.TP
+.B \-\-dangerously\-skip\-permissions
+Skip all permission prompts. The session runs every tool it is asked for,
+without asking.
+.TP
+.BI \-\-allowed\-tools " list"
+The tools that need no approval, separated by commas.
+.TP
+.BI \-\-disallowed\-tools " list"
+The tools that are never allowed, separated by commas.
+.TP
+.BI \-\-add\-dir " dir"
+Add a working directory for this session.
+.TP
+.BR \-c ", " \-\-continue
+Resume the most recent session.
+.TP
+.BI \-\-resume " [id]"
+Resume a previous session. Without an id the sessions are listed and one of
+them is picked.
+.TP
+.BI \-\-session\-id " id"
+Use a specific session id.
+.TP
+.BI \-\-system\-prompt " text"
+Replace the system prompt.
+.TP
+.BI \-\-system\-prompt\-file " path"
+Replace the system prompt with the contents of a file.
+.TP
+.BI \-\-append\-system\-prompt " text"
+Append to the system prompt.
+.TP
+.BI \-\-append\-system\-prompt\-file " path"
+Append the contents of a file to the system prompt.
+.TP
+.BI \-\-settings " json"
+Settings overrides, as a JSON object.
+.TP
+.BI \-\-setting\-sources " list"
+The setting sources to load.
+.TP
+.B \-\-debug
+Print debug information.
+.TP
+.BI \-\-debug\-file " path"
+Write debug information to a file.
+.TP
+.B \-\-verbose
+Print verbose output.
+.TP
+.BR \-v ", " \-\-version
+Print the version and exit.
+.TP
+.BR \-h ", " \-\-help
+Print the help and exit.
+.SH THE SESSION
+The prompt of the session understands a few words of its own:
+.B /help
+opens the list of the commands,
+.B /clear
+drops the conversation,
+.B /compact
+writes a summary of it in place of the conversation itself,
+.B /model
+picks the model,
+.B /config
+opens the settings,
+.B /mcp
+opens the servers of MCP and
+.B /exit
+leaves the session.
+.PP
+A line that begins with
+.B !
+runs in the shell of the session and the model is asked about the result.
+.SH ENVIRONMENT
+.TP
+.B ANTHROPIC_API_KEY
+The key of the API. The session asks for one when it is not there.
+.TP
+.B ANTHROPIC_BASE_URL
+The address of the API. A gateway of one's own may be named here.
+.TP
+.B CLAUDE_CODE_FULLSCREEN
+Set it to
+.B 1
+to use the full-screen layout, the one that keeps the whole conversation on
+the screen.
+.TP
+.B CLAUDE_CODE_NO_FLICKER
+The same as
+.BR CLAUDE_CODE_FULLSCREEN .
+.SH FILES
+.TP
+.I ~/.claude/settings.json
+The settings of the user.
+.TP
+.I ~/.claude.json
+The state of the machine: the theme, the trusted folders, the servers of MCP.
+.TP
+.I ./.claude/settings.json
+The settings of the folder.
+.TP
+.I ./.mcp.json
+The servers of MCP of the folder. They are only used when the folder is
+trusted.
+.TP
+.I ~/.claude/projects/
+The transcripts of the sessions.
+.SH SEE ALSO
+The documentation of the reference:
+.BR https://docs.claude.com/en/docs/claude-code/overview

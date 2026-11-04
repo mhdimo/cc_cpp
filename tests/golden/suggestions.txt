@@ -1,0 +1,24 @@
+───────────────────────────────────────────────────────╮
+│                                                │ Recent activity             │
+│                  Welcome back!                 │ No recent activity          │
+│                                                │ ─────────────────────────── │
+│                     ▐▛███▜▌                    │ What's new                  │
+│                    ▝▜█████▛▘                   │ <note> │
+│                      ▘▘ ▝▝                     │ <note> │
+│                                                │ <note> │
+│   MiniMax-M3.1-Flash[1m] · API Usage Billing   │ /release-notes for more     │
+│              /Users/liang/cc_cpp               │                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+
+
+────────────────────────────────────────────────────────────────────────────────
+❯ /
+────────────────────────────────────────────────────────────────────────────────
+  /add-dir               Add a new working directory
+  /advisor               Configure the advisor model
+  /agents                Manage agent configurations
+  /branch                Create a branch of the current conversation at this …
+  /btw                   Ask a quick side question without interrupting the m…
+  /chrome                Claude in Chrome (Beta) settings

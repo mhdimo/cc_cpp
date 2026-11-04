@@ -1,0 +1,22 @@
+❯ /config
+
+────────────────────────────────────────────────────────────────────────────────
+   Status   Config   Usage
+
+
+  ╭──────────────────────────────────────────────────────────────────────────╮
+  │ <note> │
+  ╰──────────────────────────────────────────────────────────────────────────╯
+
+    Auto-compact                              true
+    Show tips                                 true
+    Reduce motion                             false
+    Thinking mode                             true
+    Prompt suggestions                        true
+    Rewind code (checkpoints)                 true
+    Verbose output                            false
+    Terminal progress bar                     false
+    Show turn duration                        false
+  ↓ 25 more below
+
+  Type to filter · Enter/↓ to select · ↑ to tabs · Esc to clear
