@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The port and the reference — memory and CPU</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; padding: 40px 24px;
+    background: #12100e; color: #e8e6e3;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+  p.lead { color: #a09a94; margin: 0 0 28px; }
+  figure { margin: 0 0 32px; }
+  figcaption { color: #8a8a8a; font-size: 13px; margin-top: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: right; padding: 8px 10px; border-bottom: 1px solid #2b2825; }
+  th:first-child, td:first-child { text-align: left; }
+  th { color: #a09a94; font-weight: 500; }
+  code { background: #1c1a17; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  footer { color: #6f6a65; font-size: 12px; margin-top: 36px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>The port and the reference</h1>
+  <p class="lead">The memory a session takes and the CPU it burns, measured the same way for
+  the native port and for the bundle of JavaScript the reference runs on.</p>
+
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="ui-sans-serif, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="the memory and the CPU of the port and of the reference">
+<rect width="720" height="300" fill="#12100e"/>
+<rect x="96.0" y="44.0" width="31.0" height="198.0" rx="3" fill="#d97757"/>
+<text x="111.5" y="37.0" fill="#e8e6e3" font-size="12" text-anchor="middle">193.1</text>
+<rect x="139.0" y="215.2" width="31.0" height="26.8" rx="3" fill="#8a8a8a"/>
+<text x="154.5" y="208.2" fill="#e8e6e3" font-size="12" text-anchor="middle">26.1</text>
+<text x="145.0" y="264" fill="#c9c5c0" font-size="13" text-anchor="middle">the memory</text>
+<text x="145.0" y="281" fill="#8a8a8a" font-size="11" text-anchor="middle">MB</text>
+<rect x="246.0" y="44.0" width="31.0" height="198.0" rx="3" fill="#d97757"/>
+<text x="261.5" y="37.0" fill="#e8e6e3" font-size="12" text-anchor="middle">98.9</text>
+<rect x="289.0" y="230.6" width="31.0" height="11.4" rx="3" fill="#8a8a8a"/>
+<text x="304.5" y="223.6" fill="#e8e6e3" font-size="12" text-anchor="middle">5.7</text>
+<text x="295.0" y="264" fill="#c9c5c0" font-size="13" text-anchor="middle">the start</text>
+<text x="295.0" y="281" fill="#8a8a8a" font-size="11" text-anchor="middle">ms</text>
+<rect x="396.0" y="44.0" width="31.0" height="198.0" rx="3" fill="#d97757"/>
+<text x="411.5" y="37.0" fill="#e8e6e3" font-size="12" text-anchor="middle">12.5</text>
+<rect x="439.0" y="216.7" width="31.0" height="25.3" rx="3" fill="#8a8a8a"/>
+<text x="454.5" y="209.7" fill="#e8e6e3" font-size="12" text-anchor="middle">1.6</text>
+<text x="445.0" y="264" fill="#c9c5c0" font-size="13" text-anchor="middle">the idling</text>
+<text x="445.0" y="281" fill="#8a8a8a" font-size="11" text-anchor="middle">ms per second</text>
+<line x1="70" y1="242" x2="520" y2="242" stroke="#3a3733" stroke-width="1"/>
+<rect x="534" y="17" width="11" height="11" rx="2" fill="#d97757"/>
+<text x="552" y="26" fill="#c9c5c0" font-size="12">the reference (claude)</text>
+<rect x="534" y="36" width="11" height="11" rx="2" fill="#8a8a8a"/>
+<text x="552" y="45" fill="#c9c5c0" font-size="12">the port (cc++)</text>
+</svg>
+    <figcaption>The memory of the session once it has settled, the wall time of the start
+    until the first paint, and the CPU the session burns per second while it waits.</figcaption>
+  </figure>
+
+  <table>
+    <thead>
+      <tr>
+        <th>session</th>
+        <th>memory (MB)</th>
+        <th>the start (ms)</th>
+        <th>the start (CPU ms)</th>
+        <th>the idling (CPU ms/s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>the reference (claude)</td><td>193.1</td><td>99</td><td>110</td><td>12.5</td></tr><tr><td>the port (cc++)</td><td>26.1</td><td>6</td><td>240</td><td>1.6</td></tr>
+    </tbody>
+  </table>
+
+  <footer>Measured with <code>python3 scripts/bench.py</code> on macOS. The memory is the
+  resident memory of the process and of every child it has. The CPU of the start is the
+  whole process, its threads included: the port starts a pool of threads and reaches the
+  screen in less time, though the threads cost more CPU together.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+# The worktrees of the agents
+.claude/
+
+# Build output
+build/
+build-*/
+cmake-build-*/
+out/
+install/
+_deps/
+
+# The archives of the releases
+dist/
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+install_manifest.txt
+
+# Object / library files
+*.o
+*.obj
+*.lo
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.pdb
+*.ilk
+
+# Editor / OS
+.vscode/
+.idea/
+.cache/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+/core
+/core.*
+
+# Local environment
+.env
+.env.local
+
+# The cache of the Python of the tests
+__pycache__/
+*.pyc

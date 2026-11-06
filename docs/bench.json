@@ -1,0 +1,40 @@
+[
+  {
+    "label": "the reference (claude)",
+    "key": "claude",
+    "memory_mb": 193.140625,
+    "memory_trace_mb": [
+      192.5,
+      192.5,
+      192.6,
+      192.6,
+      192.6,
+      192.7,
+      193.0,
+      193.0,
+      193.1
+    ],
+    "startup_ms": 98.9,
+    "startup_cpu_ms": 110.0,
+    "idle_cpu_ms_per_s": 12.5
+  },
+  {
+    "label": "the port (cc++)",
+    "key": "cc++",
+    "memory_mb": 26.140625,
+    "memory_trace_mb": [
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1,
+      26.1
+    ],
+    "startup_ms": 5.7,
+    "startup_cpu_ms": 240.0,
+    "idle_cpu_ms_per_s": 1.6
+  }
+]
